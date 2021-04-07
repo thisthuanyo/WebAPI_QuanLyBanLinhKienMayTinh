@@ -47,5 +47,64 @@ namespace WebAPI_LKMT.Controllers
             });
             return Ok(kq.ToList());
         }
+        public IHttpActionResult postThemNhanVien(CNhanVien nv)
+        {
+            if (ModelState.IsValid == false) return BadRequest();
+            NhanVien a = new NhanVien
+            {
+                TenNV = nv.TenNV,
+                status = nv.status,
+                MaNV = nv.MaNV,
+                ChucVu = nv.ChucVu,
+                DiaChi = nv.DiaChi,
+                GioiTinh = nv.GioiTinh,
+                NamSinh = nv.NamSinh,
+                Pass = nv.Pass,
+                SoDT = nv.SoDT,
+                UserName = nv.UserName
+            };
+            NhanVien nvTemp = dc.NhanViens.Find(a.MaNV);
+            if (nvTemp == null)
+            {
+                dc.NhanViens.Add(a);
+                dc.SaveChanges();
+            }
+            else return BadRequest();
+            return Ok();
+        }
+        public IHttpActionResult deleteNhanVien(string id)
+        {
+            NhanVien nv = dc.NhanViens.Find(id);
+            if (nv != null)
+            {
+                dc.NhanViens.Remove(nv);
+                dc.SaveChanges();
+            }
+            else
+            {
+                return NotFound();
+            }
+            return Ok();
+        }
+        public IHttpActionResult putNhanVien(NhanVien nv)
+        {
+            if (ModelState.IsValid == false) return BadRequest();
+            NhanVien nvTemp = dc.NhanViens.Find(nv.MaNV);
+            if (nvTemp != null)
+            {
+                nvTemp.TenNV = nv.TenNV;
+                nvTemp.status = nv.status;
+                nvTemp.ChucVu = nv.ChucVu;
+                nvTemp.DiaChi = nv.DiaChi;
+                nvTemp.GioiTinh = nv.GioiTinh;
+                nvTemp.NamSinh = nv.NamSinh;
+                nvTemp.Pass = nv.Pass;
+                nvTemp.SoDT = nv.SoDT;
+                nvTemp.UserName = nv.UserName;
+                dc.SaveChanges();
+            }
+            else return NotFound();
+            return Ok();
+        }
     }
 }
