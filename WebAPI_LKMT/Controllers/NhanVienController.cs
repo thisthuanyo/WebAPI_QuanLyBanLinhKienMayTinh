@@ -12,23 +12,31 @@ namespace WebAPI_LKMT.Controllers
         private QLKTModel dc = new QLKTModel();
         public IHttpActionResult getCheckLogin(string username)
         {
-            NhanVien nv = dc.NhanViens.Where(x => x.UserName == username).SingleOrDefault();
-            if (nv == null) return NotFound();
-            CNhanVien a = new CNhanVien
+            try
             {
-                ChucVu = nv.ChucVu,
-                DiaChi = nv.DiaChi,
-                GioiTinh = nv.GioiTinh,
-                MaNV = nv.MaNV,
-                NamSinh = nv.NamSinh,
-                Pass = nv.Pass,
-                SoDT = nv.SoDT,
-                status = nv.status,
-                TenNV = nv.TenNV,
-                UserName = nv.UserName,
-            };
-            return Ok(a);
+                NhanVien nv = dc.NhanViens.Where(x => x.UserName == username).SingleOrDefault();
+                if (nv == null) return NotFound();
+                CNhanVien a = new CNhanVien
+                {
+                    ChucVu = nv.ChucVu,
+                    DiaChi = nv.DiaChi,
+                    GioiTinh = nv.GioiTinh,
+                    MaNV = nv.MaNV,
+                    NamSinh = nv.NamSinh,
+                    Pass = nv.Pass,
+                    SoDT = nv.SoDT,
+                    status = nv.status,
+                    TenNV = nv.TenNV,
+                    UserName = nv.UserName,
+                };
+                return Ok(a);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
         }
+
         public IHttpActionResult getDanhSachNhanVien()
         {
             var kq = dc.NhanViens.Select(x => new Models.CNhanVien
@@ -43,7 +51,6 @@ namespace WebAPI_LKMT.Controllers
                 status = x.status,
                 TenNV = x.TenNV,
                 UserName = x.UserName,
-                
             });
             return Ok(kq.ToList());
         }
@@ -58,13 +65,16 @@ namespace WebAPI_LKMT.Controllers
                 ChucVu = nv.ChucVu,
                 DiaChi = nv.DiaChi,
                 GioiTinh = nv.GioiTinh,
+                HoaDons = new List<HoaDon>(),
+                PhieuXuats = new List<PhieuXuat>(),
                 NamSinh = nv.NamSinh,
                 Pass = nv.Pass,
                 SoDT = nv.SoDT,
                 UserName = nv.UserName
             };
             NhanVien nvTemp = dc.NhanViens.Find(a.MaNV);
-            if (nvTemp == null)
+            NhanVien nvTemp2 = dc.NhanViens.Where(x => x.UserName == nv.UserName).SingleOrDefault();
+            if (nvTemp == null && nvTemp2 == null)
             {
                 dc.NhanViens.Add(a);
                 dc.SaveChanges();
@@ -86,7 +96,7 @@ namespace WebAPI_LKMT.Controllers
             }
             return Ok();
         }
-        public IHttpActionResult putNhanVien(NhanVien nv)
+        public IHttpActionResult putNhanVien(CNhanVien nv)
         {
             if (ModelState.IsValid == false) return BadRequest();
             NhanVien nvTemp = dc.NhanViens.Find(nv.MaNV);
