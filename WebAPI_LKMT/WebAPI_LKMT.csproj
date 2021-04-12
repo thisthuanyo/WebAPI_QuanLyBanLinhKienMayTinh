@@ -93,9 +93,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\KhachHangController.cs" />
     <Compile Include="Controllers\ChucVuController.cs" />
     <Compile Include="Controllers\LoaiLinhKienController.cs" />
-    <Compile Include="Controllers\NhanVienController.cs" />
     <Compile Include="Controllers\NhaSanXuatController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -119,6 +119,7 @@
     <Compile Include="Models\NhaSX.cs" />
     <Compile Include="Models\PhieuXuat.cs" />
     <Compile Include="Models\QLKTModel.cs" />
+    <Compile Include="Controllers\NhanVienController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
