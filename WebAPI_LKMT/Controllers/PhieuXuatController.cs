@@ -24,7 +24,7 @@ namespace WebAPI_LKMT.Controllers
             });
             return Ok(kq.ToList());
         }
-        public IHttpActionResult getPhieuXuat(String id)
+        public IHttpActionResult getPhieuXuat(int id)
         {
             Models.PhieuXuat pxTemp = dc.PhieuXuats.Find(id);
             if (pxTemp == null) return NotFound();
@@ -54,7 +54,7 @@ namespace WebAPI_LKMT.Controllers
                         MaLoai = t.LinhKien.MaLoai,
                         MaNSX = t.LinhKien.MaNSX,
                         status = t.LinhKien.status
-                    }         
+                    }
                 };
                 px.ChiTietPhieuXuats.Add(ct);
             }
@@ -67,22 +67,33 @@ namespace WebAPI_LKMT.Controllers
             {
                 MaKH = px.MaKH,
                 MaNV = px.MaNV,
-                MaPX = px.MaPX,
                 NgayXuat = px.NgayXuat,
                 status = px.status,
                 TongTien = px.TongTien,
                 ChiTietPhieuXuats = px.ChiTietPhieuXuats.Select(x => new ChiTietPhieuXuat
                 {
+                    MaPX = x.MaPX,
                     DonGia = x.DonGia,
                     MaLK = x.MaLK,
-                    MaPX = x.MaPX,
-                    SoLuong = x.SoLuong,
+                    SoLuong = x.SoLuong
                 }).ToList()
             };
             Models.PhieuXuat b = dc.PhieuXuats.Find(a.MaPX);
             if (b != null) return BadRequest();
             dc.PhieuXuats.Add(a);
             dc.SaveChanges();
+            return Ok();
+        }
+        public IHttpActionResult putPhieuXuat(CPhieuXuat px)
+        {
+            if (ModelState.IsValid == false) return BadRequest();
+            PhieuXuat pxa = dc.PhieuXuats.Find(px.MaPX);
+            if (pxa != null)
+            {
+                pxa.status = px.status;
+                dc.SaveChanges();
+            }
+            else return NotFound();
             return Ok();
         }
     }
