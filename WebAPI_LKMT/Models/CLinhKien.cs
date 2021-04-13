@@ -23,6 +23,6 @@ namespace WebAPI_LKMT.Models
 
         public virtual CLoaiLK LoaiLK { get; set; }
 
-        public virtual CNhanVien NhaSX { get; set; }
+        public virtual CNhaSX NhaSX { get; set; }
     }
 }
