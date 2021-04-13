@@ -129,8 +129,8 @@ E:\Visual studio projects\Thực tập tốt nghiệp\WebAPI_QuanLyBanLinhKienMa
 E:\Visual studio projects\Thực tập tốt nghiệp\WebAPI_QuanLyBanLinhKienMayTinh\WebAPI_LKMT\bin\System.Web.Http.xml
 E:\Visual studio projects\Thực tập tốt nghiệp\WebAPI_QuanLyBanLinhKienMayTinh\WebAPI_LKMT\bin\System.Web.Http.WebHost.xml
 E:\Visual studio projects\Thực tập tốt nghiệp\WebAPI_QuanLyBanLinhKienMayTinh\WebAPI_LKMT\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-E:\Visual studio projects\Thực tập tốt nghiệp\WebAPI_QuanLyBanLinhKienMayTinh\WebAPI_LKMT\obj\Debug\WebAPI_LKMT.csprojAssemblyReference.cache
 E:\Visual studio projects\Thực tập tốt nghiệp\WebAPI_QuanLyBanLinhKienMayTinh\WebAPI_LKMT\obj\Debug\WebAPI_LKMT.csproj.CoreCompileInputs.cache
 E:\Visual studio projects\Thực tập tốt nghiệp\WebAPI_QuanLyBanLinhKienMayTinh\WebAPI_LKMT\obj\Debug\WebAPI_LKMT.csproj.CopyComplete
 E:\Visual studio projects\Thực tập tốt nghiệp\WebAPI_QuanLyBanLinhKienMayTinh\WebAPI_LKMT\obj\Debug\WebAPI_LKMT.dll
 E:\Visual studio projects\Thực tập tốt nghiệp\WebAPI_QuanLyBanLinhKienMayTinh\WebAPI_LKMT\obj\Debug\WebAPI_LKMT.pdb
+E:\Visual studio projects\Thực tập tốt nghiệp\WebAPI_QuanLyBanLinhKienMayTinh\WebAPI_LKMT\obj\Debug\WebAPI_LKMT.csprojAssemblyReference.cache

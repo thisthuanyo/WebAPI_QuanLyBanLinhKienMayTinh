@@ -95,6 +95,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\KhachHangController.cs" />
     <Compile Include="Controllers\ChucVuController.cs" />
+    <Compile Include="Controllers\LinhKienController.cs" />
     <Compile Include="Controllers\LoaiLinhKienController.cs" />
     <Compile Include="Controllers\NhaSanXuatController.cs" />
     <Compile Include="Global.asax.cs">
