@@ -44,8 +44,15 @@ namespace WebAPI_LKMT.Controllers
             NhaSX nsx = dc.NhaSXes.Find(id);
             if(nsx != null)
             {
-                dc.NhaSXes.Remove(nsx);
-                dc.SaveChanges();
+                if(nsx.LinhKiens.Count>0)
+                {
+                    return BadRequest();
+                }
+                else
+                {
+                    dc.NhaSXes.Remove(nsx);
+                    dc.SaveChanges();
+                }
             }
             else
             {

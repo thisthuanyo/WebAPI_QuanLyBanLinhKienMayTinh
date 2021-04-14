@@ -44,8 +44,14 @@ namespace WebAPI_LKMT.Controllers
             LoaiLK llk = dc.LoaiLKs.Find(id);
             if (llk != null)
             {
-                dc.LoaiLKs.Remove(llk);
-                dc.SaveChanges();
+                if(llk.LinhKiens.Count > 0)
+                {
+                    return BadRequest();
+                } else
+                {
+                    dc.LoaiLKs.Remove(llk);
+                    dc.SaveChanges();
+                }
             }
             else
             {

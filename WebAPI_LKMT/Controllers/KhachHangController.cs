@@ -67,7 +67,6 @@ namespace WebAPI_LKMT.Controllers
             KhachHang khTemp = dc.KhachHangs.Find(x.MaKH);
             if (khTemp != null)
             {
-                khTemp.MaKH = x.MaKH;
                 khTemp.TenKh = x.TenKh;
                 khTemp.DiaChi = x.DiaChi;
                 khTemp.GioiTinh = x.GioiTinh;
