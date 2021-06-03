@@ -52,8 +52,15 @@ namespace WebAPI_LKMT.Controllers
             KhachHang kh = dc.KhachHangs.Find(id);
             if (kh != null)
             {
-                dc.KhachHangs.Remove(kh);
-                dc.SaveChanges();
+                if(kh.PhieuXuats.Count > 0 || kh.HoaDons.Count >0)
+                {
+                    return BadRequest();
+                }
+                else
+                {
+                    dc.KhachHangs.Remove(kh);
+                    dc.SaveChanges();
+                }
             }
             else
             {

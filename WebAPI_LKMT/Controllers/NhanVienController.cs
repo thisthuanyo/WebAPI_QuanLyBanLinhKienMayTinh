@@ -87,8 +87,15 @@ namespace WebAPI_LKMT.Controllers
             NhanVien nv = dc.NhanViens.Find(id);
             if (nv != null)
             {
-                dc.NhanViens.Remove(nv);
-                dc.SaveChanges();
+                if (nv.HoaDons.Count > 0 || nv.PhieuXuats.Count > 0)
+                {
+                    return BadRequest();
+                }
+                else
+                {
+                    dc.NhanViens.Remove(nv);
+                    dc.SaveChanges();
+                }
             }
             else
             {

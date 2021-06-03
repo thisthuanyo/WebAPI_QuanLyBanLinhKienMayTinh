@@ -73,6 +73,7 @@ namespace WebAPI_LKMT.Controllers
             temp_lk.MaNSX = lk.MaNSX;
             temp_lk.TenLK = lk.TenLK;
             temp_lk.GiaBan = lk.GiaBan;
+            temp_lk.status = lk.status;
             temp_lk.LoaiLK = dc.LoaiLKs.Find(lk.MaLoai);
             temp_lk.NhaSX = dc.NhaSXes.Find(lk.MaNSX);
 

@@ -74,7 +74,7 @@ namespace WebAPI_LKMT.Controllers
                 NgayGiao = hd.NgayGiao,
                 MaPX = hd.MaPX,
             };
-            Models.HoaDon b = dc.HoaDons.Find(a.MaPX);
+            Models.HoaDon b = dc.HoaDons.Find(a.MaHD);
             if (b != null) return BadRequest();
             dc.HoaDons.Add(a);
             dc.SaveChanges();
